@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Streamline Your Workflow | Landing Page</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">Core<span>Link</span></div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Turn your ideas into <span class="highlight">reality</span> faster.</h1>
+                <p>Join 2,000+ creators receiving weekly insights on performance, design, and growth. No spam, just value.</p>
+                
+                <form id="newsletter-form" class="subscribe-form">
+                    <input type="email" id="email-input" placeholder="Enter your email" required>
+                    <button type="submit" id="submit-btn">Get Started</button>
+                </form>
+                <p class="form-footer">Join the waitlist. Free forever for early adopters.</p>
+            </div>
+        </div>
+    </header>
+
+    <section class="features">
+        <div class="container grid">
+            <div class="feature-card">
+                <h3>Design</h3>
+                <p>Clean, minimal interfaces that convert users into customers.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Strategy</h3>
+                <p>Data-driven insights to help you scale your personal brand.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Automation</h3>
+                <p>Learn how to use AI to save 10+ hours every single week.</p>
+            </div>
+        </div>
+    </section>
+
+    <div id="success-msg" class="hidden">
+        <div class="modal">
+            <h2>Welcome to the club! 🚀</h2>
+            <p>Check your inbox to confirm your subscription.</p>
+            <button onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
