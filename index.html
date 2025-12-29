@@ -4,8 +4,142 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Streamline Your Workflow | Landing Page</title>
-    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-hover: #4f46e5;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --text-gray: #64748b;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Navbar */
+        .navbar { padding: 1.5rem 0; }
+        .logo { font-size: 1.5rem; font-weight: 800; letter-spacing: -1px; }
+        .logo span { color: var(--primary); }
+
+        /* Hero Section */
+        .hero { padding: 6rem 0; text-align: center; }
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -2px;
+        }
+        .highlight { color: var(--primary); }
+        .hero-content p {
+            font-size: 1.25rem;
+            color: var(--text-gray);
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+        }
+
+        /* Form Styles */
+        .subscribe-form {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        input[type="email"] {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        input[type="email"]:focus { border-color: var(--primary); }
+
+        button {
+            background: var(--primary);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        button:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+
+        .form-footer {
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: #94a3b8;
+        }
+
+        /* Features Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .feature-card {
+            padding: 2rem;
+            background: var(--light);
+            border-radius: 12px;
+            text-align: left;
+        }
+
+        /* Success Message */
+        .hidden { display: none !important; }
+
+        .success-box {
+            background: #ecfdf5;
+            color: #065f46;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #10b981;
+            max-width: 500px;
+            margin: 0 auto;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.5rem; }
+            .subscribe-form { flex-direction: column; }
+        }
+    </style>
 </head>
 <body>
 
@@ -32,7 +166,7 @@
                     </div>
                 </div>
 
-                <p class="form-footer">Join the waitlist. Free forever for early adopters.</p>
+                <p id="footer-text" class="form-footer">Join the waitlist. Free forever for early adopters.</p>
             </div>
         </div>
     </header>
@@ -54,14 +188,29 @@
         </div>
     </section>
 
-    <div id="success-msg" class="hidden">
-        <div class="modal">
-            <h2>Welcome to the club! 🚀</h2>
-            <p>Check your inbox to confirm your subscription.</p>
-            <button onclick="closeModal()">Close</button>
-        </div>
-    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('newsletter-form');
+            const successMsg = document.getElementById('inline-success');
+            const submitBtn = document.getElementById('submit-btn');
+            const footerText = document.getElementById('footer-text');
 
-    <script src="script.js"></script>
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                // 1. Feedback state
+                submitBtn.innerText = 'Joining...';
+                submitBtn.disabled = true;
+
+                // 2. Simulate delay
+                setTimeout(() => {
+                    // 3. Smooth transition
+                    form.classList.add('hidden');
+                    footerText.classList.add('hidden');
+                    successMsg.classList.remove('hidden');
+                }, 800);
+            });
+        });
+    </script>
 </body>
 </html>
