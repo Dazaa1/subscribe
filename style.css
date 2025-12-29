@@ -160,3 +160,26 @@ button:hover {
     .hero-content h1 { font-size: 2.5rem; }
     .subscribe-form { flex-direction: column; }
 }
+
+/* Success Message Styling */
+.hidden {
+    display: none;
+}
+
+.success-box {
+    background: #ecfdf5; /* Light green background */
+    color: #065f46;      /* Dark green text */
+    padding: 1.25rem;
+    border-radius: 8px;
+    border: 1px solid #10b981;
+    max-width: 500px;
+    margin: 0 auto;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Keep the rest of your previous styles... */

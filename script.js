@@ -1,29 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('newsletter-form');
-    const successMsg = document.getElementById('success-msg');
-    const emailInput = document.getElementById('email-input');
+    const successContainer = document.getElementById('inline-success');
+    const submitBtn = document.getElementById('submit-btn');
 
     form.addEventListener('submit', (e) => {
-        e.preventDefault(); // Stop page refresh
+        e.preventDefault();
 
-        const email = emailInput.value;
-        
-        // You would typically send 'email' to your backend or ESP (like Mailchimp) here
-        console.log(`Sending ${email} to our mailing list...`);
+        // 1. Change button state
+        submitBtn.disabled = true;
+        submitBtn.innerText = 'Joining...';
 
-        // Simulate an API call
-        form.style.opacity = '0.5';
-        document.getElementById('submit-btn').innerText = 'Joining...';
-
+        // 2. Simulate API call (1 second delay)
         setTimeout(() => {
-            successMsg.classList.remove('hidden');
-            form.reset();
-            form.style.opacity = '1';
-            document.getElementById('submit-btn').innerText = 'Get Started';
+            // 3. Hide form and show success message
+            form.style.display = 'none';
+            successContainer.classList.remove('hidden');
         }, 1000);
     });
 });
-
-function closeModal() {
-    document.getElementById('success-msg').classList.add('hidden');
-}
