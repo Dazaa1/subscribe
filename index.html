@@ -198,19 +198,34 @@
             form.addEventListener('submit', (e) => {
                 e.preventDefault();
                 
-                // 1. Feedback state
+                // 1. Visual feedback for the user
                 submitBtn.innerText = 'Joining...';
                 submitBtn.disabled = true;
 
-                // 2. Simulate delay
-                setTimeout(() => {
-                    // 3. Smooth transition
+                // 2. Prepare the data for MailerLite
+                const formData = new FormData(form);
+
+                // 3. Send the data to MailerLite via Fetch
+                fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    mode: 'no-cors', // Essential for sending to MailerLite from a static page
+                })
+                .then(() => {
+                    // 4. Smooth transition on success
                     form.classList.add('hidden');
                     footerText.classList.add('hidden');
                     successMsg.classList.remove('hidden');
-                }, 800);
+                })
+                .catch(err => {
+                    console.error('Submission error:', err);
+                    // Reset button if there is an error so they can try again
+                    submitBtn.innerText = 'Get Started';
+                    submitBtn.disabled = false;
+                    alert('Something went wrong. Please try again.');
+                });
             });
-        });
+        }); 
     </script>
 </body>
 </html>
