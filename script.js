@@ -1,20 +1,21 @@
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('newsletter-form');
-    const successContainer = document.getElementById('inline-success');
+    const successMsg = document.getElementById('inline-success');
     const submitBtn = document.getElementById('submit-btn');
 
     form.addEventListener('submit', (e) => {
         e.preventDefault();
-
-        // 1. Change button state
-        submitBtn.disabled = true;
+        
+        // 1. Give the user feedback that something is happening
         submitBtn.innerText = 'Joining...';
+        submitBtn.style.opacity = '0.7';
+        submitBtn.disabled = true;
 
-        // 2. Simulate API call (1 second delay)
+        // 2. Simulate a short delay (like a real database save)
         setTimeout(() => {
-            // 3. Hide form and show success message
+            // 3. Hide the form and show the success message
             form.style.display = 'none';
-            successContainer.classList.remove('hidden');
-        }, 1000);
+            successMsg.classList.remove('hidden');
+        }, 800);
     });
 });
